@@ -5,15 +5,15 @@ var nextId = "";
 
 function update() {
   index = clamp(index);
-  document.getElementById(contentId).innerHTML = getIntroductionContent(index);
+  $(contentId).html(getIntroductionContent(index));
   if(!hasPrevious(index))
-    document.getElementById(prevId).style.visibility = "hidden";
+    $(prevId).css("visibility", "hidden");
   else
-    document.getElementById(prevId).style.visibility = "visible";
+    $(prevId).css("visibility", "visible");
   if(!hasNext(index))
-    document.getElementById(nextId).style.visibility = "hidden";
+    $(nextId).css("visibility", "hidden");
   else
-    document.getElementById(nextId).style.visibility = "visible";
+    $(nextId).css("visibility", "visible");
 }
 
 function previous() {
@@ -27,7 +27,7 @@ function next() {
 }
 
 function setIds(content, prev, next) {
-  contentId = content;
-  prevId = prev;
-  nextId = next;
+  contentId = "#" + content;
+  prevId = "#" + prev;
+  nextId = "#" + next;
 }

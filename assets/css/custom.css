@@ -419,3 +419,21 @@ line-height: 1.428571429;
   height: auto;
   max-width: 800px;
 }
+
+
+@media(min-width:1366px) {
+  .prettyprint {
+    width: 58%;
+    margin-right: 2%;
+    float: left;
+  }
+
+  .code-description {
+    width: 40%;
+    float:right;
+  }
+
+  #description {
+    min-height: 440px;
+  }
+}
