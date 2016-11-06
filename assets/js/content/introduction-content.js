@@ -11,7 +11,8 @@ var introductionContent = [
 <p class=\"introduction\">The GPU and its memory (graphic memory).<\/p> <br>\
 <img src=\"assets\/img\/geforce.png\" width=\"200\" height=\"148\" \/>",
 
-  "Normally the execution is divided in 3 steps: \
+  "<h2>Code Execution<\/h2> <br> \
+<p class=\"introduction\">Normally the execution is divided in 3 steps:<\/p> \
 <ol type=\"1\" class=\"ol-introduction\"> \
 <li>Copy data (from CPU primary memory) to GPU memory.<\/li> \
 <li>Load GPU code in the graphics card.<\/li> \
