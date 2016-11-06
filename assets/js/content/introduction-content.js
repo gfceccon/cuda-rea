@@ -35,12 +35,11 @@ var introductionContent = [
   "<h2>Memory management<\/h2> <br> \
 <p class=\"introduction\">The data from host memory needs to be copied to the device memory before the device code call.<\/p> \
 <p class=\"introduction\">Functions from CUDA API: <span class=\"code-green\">cudaMalloc<\/span>(), <span class=\"code-green\">cudaFree<\/span>(), <span class=\"code-green\">cudaMemcpy<\/span>().<\/p> \
-<p class=\"introduction\">These functions are similar to <span class=\"code-blue\">malloc<\/span>(), <span class=\"code-blue\">free<\/span>() and <span class=\"code-blue\">memcpy<\/span>() from C/C++, but the ones from CUDA API handle data on the device memory.<\/p>",
+<p class=\"introduction\">These functions are similar to <span class=\"code-blue\">malloc<\/span>(), <span class=\"code-blue\">free<\/span>() and <span class=\"code-blue\">memcpy<\/span>() from C/C++, but the ones from CUDA API handle data on the device memory and the cudaMemcpy function receives an aditional parameter, with its values being either cudaMemcpyHostToDevice or cudaMemcpyDeviceToHost to indicate the direction of the memory copy.<\/p>",
 
-  "<h2>Keyword <span class=\"code-green\">__global__<\/span><\/h2> <br> \
+  "<h2><span class=\"code-green\">__global__<\/span> keyword<\/h2><br> \
 <p class=\"introduction\">Used to declare device code functions. It is called from host code and executed on the device, parallel to the execution of the host code, unless synchronization is forced using the corresponding functions.<\/p> <br> \
-  <h2>Triple angle brackets<\/h2> <br> \
-<p>&lt;&lt;&lt;<span class=\"code-variable\">N<\/span>, <span class=\"code-variable\">M<\/span>&gt;&gt;&gt; <\/p> \
+  <h2>Triple angle brackets:  &lt;&lt;&lt;<span class=\"code-variable\">N<\/span>, <span class=\"code-variable\">M<\/span>&gt;&gt;&gt;<\/h2> <br> \
 <p class=\"introduction\">The triple angle brackets are used to make a call from host code to device code (also called a kernel launch) with <b>N<\/b> parallel blocks and <b>M<\/b> parallel threads per block.<\/p>",
 
   "<h2>Blocks<\/h2> <br> \
