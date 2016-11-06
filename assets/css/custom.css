@@ -390,6 +390,11 @@ line-height: 1.428571429;
 
 }
 
+#buttons {
+  height: 50px;
+  margin-top: 25px;
+}
+
 #previous {
   float: left;
 }
@@ -420,8 +425,11 @@ line-height: 1.428571429;
   max-width: 800px;
 }
 
+.prettyprint {
+  margin-top: 20px;
+}
+@media(min-width:1300px) {
 
-@media(min-width:1366px) {
   .prettyprint {
     width: 58%;
     margin-right: 2%;
