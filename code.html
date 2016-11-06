@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-      <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Free Bootstrap Admin Template : Binary Admin</title>
-	<!-- BOOTSTRAP STYLES-->
+  	  <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-     <!-- FONTAWESOME STYLES-->
+      <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-     <!-- MORRIS CHART STYLES-->
+      <!-- MORRIS CHART STYLES-->
     <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-        <!-- CUSTOM STYLES-->
+      <!-- CUSTOM STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
-     <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+      <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+      <!-- PRETTIFY DEFAULT-->
+    <link href="assets/css/prettify.css" rel="stylesheet" />
 </head>
 <body>
     <div id="wrapper">
@@ -49,7 +51,54 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
-             <!-- /. PAGE INNER  -->
+            <pre class="prettyprint linenums">#include &lt;stdio.h&gt;
+#define N 1&lt;&lt;20
+#define M 512
+__global__ void reverse(int *d){
+  __shared__ int s[N];
+  int t = threadIdx.x;
+  int tr = N-t-1;
+  s[t] = d[t];
+  __syncthreads();
+  d[t] = s[tr];
+}
+
+__global__ void saxpy(float a, float *x, float *y){
+  int i = blockIdx.x*blockDim.x + threadIdx.x;
+  if (i &lt; N) y[i] = a*x[i] + y[i];
+}
+
+int main(void){
+  float *x, *y, *d_x, *d_y;
+  x = (float*)malloc(N*sizeof(float));
+  y = (float*)malloc(N*sizeof(float));
+
+  cudaMalloc(&d_x, N*sizeof(float));
+  cudaMalloc(&d_y, N*sizeof(float));
+
+  for (int i = 0; i &lt; N; i++) {
+    x[i] = 1.0f;
+    y[i] = 2.0f;
+  }
+
+  cudaMemcpy(d_x, x, N*sizeof(float), cudaMemcpyHostToDevice);
+  cudaMemcpy(d_y, y, N*sizeof(float), cudaMemcpyHostToDevice);
+
+  // Perform SAXPY on 1M elements
+  saxpy&lt;&lt;&lt;(N+M-1)/M, M&gt;&gt;&gt;(2.0f, d_x, d_y);
+  // Copy back result
+  cudaMemcpy(y, d_y, N*sizeof(float), cudaMemcpyDeviceToHost);
+  // Reverse content of x vector using parallel threads and copy back the result
+  reverse&lt;&lt;&lt;1, N&gt;&gt;&gt;(d_x);
+  cudaMemcpy(x, d_x, N*sizeof(float), cudaMemcpyDeviceToHost);
+
+
+  free(x); free(y);
+  cudaFree(d_x); cudaFree(d_y);
+  return 0;
+}
+             </pre>
+              <!-- /. PAGE INNER  -->
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>
@@ -62,11 +111,13 @@
     <!-- METISMENU SCRIPTS -->
     <script src="assets/js/jquery.metisMenu.js"></script>
      <!-- MORRIS CHART SCRIPTS -->
-     <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/js/morris/morris.js"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
-
-
+      <!-- PRETTIFY SCRIPT-->
+    <script src="assets/js/prettify.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/content/code.js"></script>
 </body>
 </html>

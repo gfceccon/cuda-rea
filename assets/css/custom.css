@@ -23,7 +23,7 @@ body {
 
 #page-wrapper {
     padding: 15px 15px;
-    min-height: 600px;
+    min-height: 1200px;
     background:#F3F3F3;
 
 }
@@ -32,7 +32,7 @@ body {
     margin:10px 20px 10px 0px;
     background-color:#fff!important;
     padding:10px;
-    min-height:400px;
+    min-height:640px;
 }
 
 .text-center {
@@ -371,9 +371,9 @@ line-height: 1.428571429;
 
  @media(min-width:768px) {
      #page-wrapper{
-               margin: 0 0 0 260px;
+        margin: 0 0 0 260px;
         padding: 15px 30px;
-        min-height: 600px;
+        min-height: 1200px;
 
     }
 
@@ -397,18 +397,25 @@ line-height: 1.428571429;
 #next {
   float: right;
 }
-code-brown {
+
+.code-brown {
   color: #880000;
 }
-code-green {
+.code-green {
   color: #008800;
 }
-code-variable {
+.code-variable {
   color: #006666;
 }
-code-operator {
+.code-operator {
   color: #666600
 }
-code-blue {
+.code-blue {
   color: #000088;
+}
+
+.cuda-img {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
 }
