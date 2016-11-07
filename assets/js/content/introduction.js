@@ -5,7 +5,7 @@ var nextId = "";
 
 function update() {
   index = clamp(index);
-  $(contentId).html(getIntroductionContent(index));
+  $(contentId).html(getIntroductionContent(index) + "<div style=\"clear:both\"></div>");
   if(!hasPrevious(index))
     $(prevId).css("visibility", "hidden");
   else
