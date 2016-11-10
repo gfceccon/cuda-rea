@@ -22,7 +22,7 @@ var introductionContent = [
 
   "<h2>Step 1<\/h2> <br> \
 <img src=\"assets\/img\/cuda1.png\" class=\"cuda-img\"\/> \
-<p class=\"introduction\">The data is copied from CPU memory in to GPU memory, passing through the PCI bus.<\/p>",
+<p class=\"introduction\">The data is copied from CPU memory into GPU memory, passing through the PCI bus.<\/p>",
 
   "<h2>Step 2<\/h2> <br> \
 <img src=\"assets\/img\/cuda2.png\" class=\"cuda-img\"\/> \
@@ -30,7 +30,7 @@ var introductionContent = [
 
   "<h2>Step 3<\/h2> <br> \
 <img src=\"assets\/img\/cuda3.png\" class=\"cuda-img\"\/> \
-<p class=\"introduction\">The results are copied from GPU memory in to CPU memory, passing through the PCI bus.<\/p>",
+<p class=\"introduction\">The results are copied from GPU memory into CPU memory, passing through the PCI bus.<\/p>",
 
   "<h2>Memory management<\/h2> <br> \
 <p class=\"introduction\">The data from host memory needs to be copied to the device memory before the device code call.<\/p> \

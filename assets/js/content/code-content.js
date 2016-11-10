@@ -36,7 +36,7 @@ var codeDescription = [
   {
       lines: [33, 34, 12, 13, 14, 15],
       description: "<h1>saxpy function<\/h1> <br> \
-      <p class=\"description\">&nbsp;&nbsp;&nbsp;The saxpy function creates many blocks and threads and makes it so every thread acesses a different index of the arrays, calculates (ax + y) and the saves the result to the corresponding position of the y array, all in parallel.<br> \
+      <p class=\"description\">&nbsp;&nbsp;&nbsp;The saxpy function creates many blocks and threads and makes it so every thread acesses a different index of the arrays, calculates (ax + y) and then saves the result to the corresponding position of the y array, all in parallel.<br> \
       &nbsp;&nbsp;&nbsp;The first important thing to note here is the kernel launch. The second parameter's value is the defined M value, no surprises there, but the first parameter must be adjusted so that no matter the size of the array passed, all its members bust be processed by a different thread, even if the number of threads surpasses the necessary.<br> \
       &nbsp;&nbsp;&nbsp;Inside the function itself, the i variable receives the index value of the numbers that will be processed by this specific thread, and then checks to see if the value is within bounds before calculating (ax + y) and saving the result in the y array. The boundary check is very important, because, as was just stated, the number of threads might be higher than the number of elements inside the array.<br> \
       &nbsp;&nbsp;&nbsp;Back in the host code, there is a cudaMemcpy call that copies the contents of <span class=\"code-variable\">d_y<\/span> back to the host memory pointed by <span class=\"code-variable\">y<\/span>. Due to the nature of the cudaMemcpy funtion, we have a guarantee that the array copied will contain the results after the execution of saxpy is finished. Also note that, as this time the copy is made from device to memory, the last parameter is different.<\/p>"
@@ -45,9 +45,9 @@ var codeDescription = [
       lines: [35, 36, 3, 4, 5, 6, 7, 8, 9, 10],
       description: "<h1>reverse function<\/h1> <br> \
       <p class=\"description\">&nbsp;&nbsp;&nbsp;The reverse function, unlike the saxpy function, creates a single block and one thread for each array position and uses a shared memory between those threads to invert the contents of the array passed.<br> \
-      &nbsp;&nbsp;&nbsp;The kernel launch and the cudaMemcpy function inside the host code do not offer anything new for us to comment<br> \
+      &nbsp;&nbsp;&nbsp;The kernel launch and the cudaMemcpy function inside the host code do not offer anything new for us to comment.<br> \
       &nbsp;&nbsp;&nbsp;Inside the function though, there is a shared variable created. This array has the same size as the one to be reversed and, because of the __shared__ keyword, is created only once, since there is only one block.<br> \
-      &nbsp;&nbsp;&nbsp;The <span class=\"code-variable\">t<\/span> variable contains the current position of the array, and the <span class=\"code-variable\">t<\/span> variable contains it's mirrored position inside the array.<br> \
+      &nbsp;&nbsp;&nbsp;The <span class=\"code-variable\">t<\/span> variable contains the current position of the array, and the <span class=\"code-variable\">tr<\/span> variable contains it's mirrored position inside the array.<br> \
       &nbsp;&nbsp;&nbsp;The values of the original array are first copied to the auxiliar variable independently by each thread. There is then a call to the __syncthreads function, to guarantee that the values have been copied before they are copied back to the original array in their mirrored positions.<\/p>"
   },
   {
