@@ -3,6 +3,21 @@ var introductionContent = [
 <p class=\"introduction\">CUDA is an API (Application Programming Interface) model created by Nvidia, a technology company that design graphics processing units (GPUs) and other related technologies.<\/p> \
 <p class=\"introduction\">The API takes advantage of the high parallelism of the GPUs and computational capacity for general purpose applications, like fast sort algorithms of large lists and molecular dynamics simulations.<\/p>",
 
+  "<h1>OpenGL Pipeline<\/h1> \
+<p class=\"introduction\">We could use the OpenGL or DirectX for general-purpose computing, but we'd have to make a few tweaks:</p> \
+<ul style=\".\"> \
+<li>Use texture for data input<\/li> \
+<li>Use Pixel Shader for calculation<\/li> \
+<\/ul> \
+<p class=\"introduction\">Or we could:<\/p> \
+<ul style=\".\"> \
+<li>Disable Tessellation and Geometry Shader<\/li> \
+<li>Use Vertex Shader and vertices for input<\/li> \
+<li>Use Pixel Shader and for calculation<\/li> \
+<\/ul> \
+<p class=\"introduction\">The output will always be the framebuffer (an image), so the conversion to useful data is needed.<\/p> \
+<img src=\"assets\/img\/opengl.png\" class=\"opengl-img\"\/>",
+
   "<h1>Terminology<\/h1> \
   CUDA memory access and processing are divided in two categories, according to where they happen: \
 <h2>Host<\/h2> \
@@ -65,20 +80,20 @@ var introductionContent = [
 <p class=\"introduction\">If, however, we want the copying process to ignore those precautions placed on the <span class=\"code-green\">cudaMemcpy<\/span>() function and just copy the memory, there is another function available, <span class=\"code-green\">cudaMemcpyAsync<\/span>().<\/p>",
 
   "<h1>Extra:<\/h1> \
-<h3>Error Handling<\/h2> <br> \
+<h3>Error Handling<\/h3> <br> \
 <ul style=\".\"> \
 <li>CUDA API calls return type is cudaError_t<\/li> \
 <li>function: cudaError_t cudaGetLastError()<\/li> \
 <li>function: char *cudaGetErrorString(cudaError_t)<\/li> \
 <\/ul> \
-<h3>Device Managing functions<\/h2> <br> \
+<h3>Device Managing functions<\/h3> <br> \
 <ul style=\".\"> \
 <li>cudaGetDeviceCount(int *count)<\/li> \
 <li>cudaSetDevice(int device)<\/li> \
 <li>cudaGetDevice(int *device)<\/li> \
 <li>cudaGetDeviceProperties(cudaDeviceProp *prop, int device)<\/li> \
 <\/ul> \
-<h3>Compiler<\/h2> <br> \
+<h3>Compiler<\/h3> <br> \
 <ul style=\".\"> \
 <li>nvcc<\/li> \
 <\/ul>"
