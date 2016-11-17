@@ -31,3 +31,16 @@ function setIds(content, prev, next) {
   prevId = "#" + prev;
   nextId = "#" + next;
 }
+
+document.onkeydown = function (e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '37') {
+       previous();
+    }
+    else if (e.keyCode == '39') {
+       next();
+    }
+
+}
